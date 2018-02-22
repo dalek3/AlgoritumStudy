@@ -231,5 +231,175 @@ typedef ListStack Stack;
     - 저장순서가 가장 앞선 데이터를 반환하되 삭제하지 않는다.
     - 본 함수의 호출을 위해서는 데이터가 하나 이상 존재함이 보장되어야 한다.
 
+- 원형큐
 
-    // 원형 큐부터
+- 배열기반
+#define QUE_LEN 100
+typedef int Data;
+
+typedef struct _cQueue
+{
+    int front;
+    int rear;
+    Data queArr[QUE_LEN];
+} CQueue;
+
+typedef CQueue Queue;
+
+void QueueInit(Queue * pq);
+int QIsEmpty(Queue * pq);
+
+void Enqueue(Queue * p, Data data);
+Data Dequeue(Queue * pq);
+Data QPeek(Queue * pq);
+
+//
+int NextPosIdx(int pos)
+{
+    if(pos == QUE_LEN-1)
+        return 0;
+    else
+        return pos+1;
+}
+
+- 연결리스트 기반
+
+typedef int Data;
+
+typedef struct_node
+{
+    Data data;
+    struct_node * next;
+} Node;
+
+typedef struct_lQueue
+{
+    Node * front;
+    Node * rear;
+}
+
+typedef LQueue Queue;
+
+void QueueInit(Queue * pq);
+int QIsEmpty(Queue * pq);
+
+void Enqueue(Queue * p, Data data);
+Data Dequeue(Queue * pq);
+Data QPeek(Queue * pq);
+
+- 트리
+    - 계층적 관계를 표현하는 자료구조
+
+- 이진트리
+    - 조건
+        - 루트 노드를 중심으로 두개의 서브 트리로 나뉘어진다.
+        - 나뉘어진 두 서브 트리도 모두 이진트리이어야한다.
+    - 트리와 이진트리는 구조가 재귀적이다.
+    그러므로 관련된연산은 재귀적으로 구현
+
+- 배열기반
+
+    - 노드에 번호를 부여하고 그 번호에 해당하는 값을 배열의 인덱스 값으로 활용
+    - **편의상 배열의 첫번째 요소는 사용하지 않는다.**
+
+    - 장점
+        - 접근이 용이
+// 노드이자 이진트리를 표현한 구조체 정의
+- 이진 트리의 모든 노드는 직/간접적으로 연결되어 있다.
+- 따라서 루트 노드의 주소 값만 기억하면, 인진 트리 전체를 가리키는것과 다름이 없다.
+typedef struct_bTreeNode
+{
+    BTData data;
+    struct _bTreeNode * left;
+    struct _bTreeNode * right;
+} BTreeNode;
+
+- 하나의 노드는 그 자체로 이진트리이다.
+
+    BTreeNode * MakeBTreeNode(void);    //노드의 생성
+    BTData GetData(BTreeNode * bt);     //노드에 저장된 데이터를 반환
+    void SetData(BTreeNode * bt, BTData data);  //노드에 데이터를 저장
+
+    //노드에 직접 접근하는 것보다 함수를 통한 접근이 보다 칭찬받을 수 있는 구조
+
+    BTreeNode * GetLeftSubTree(BTreeNode * bt); //왼쪽 서브 트리의 주소 값 반환
+    BTreeNode * GetRightSubTree(BTreeNoe * bt);
+    //오른쪽 서브 트리의 주소 값 반환
+
+    - 루트 노드를 포함하여 어떠한 노드의 주소 값도 인자로 전달될 수 있다.
+    - 전달된 노드의 왼쪽, 오른쪽 '서브 노드의 루트 노드 주소 값' 또는 그냥 '노드의 주소 값'이 반환된다.
+
+    void MakeLeftSubTree(BTreeNode * main, BTreeNode * sub);    //main의 서브 왼쪽 서브 트리로 sub를 연결
+
+    void MakeRightSubTree(BTreeNode * main, BTreeNode * sub);   //main의 오른쪽 서브트리로 sub를 연결
+
+- 우선순위 큐
+    - 우선순위를 근거로 작성 위치를 찾아서 데이터를 저장하는 방식
+    1 배열 기반
+    2 연결 리스트 기반
+    3 힙 기반
+
+    1,2 방법은 모두 최악의 겨우 새 데이터릐 위치를 찾기위해서 기존에 저장된 모든 데이터와 비교를 진행해야한다.
+
+
+- 힙(Heap)
+    - 완전 이진트리
+    - 최대힙
+        - 모든 노드에 저장된 값은 자식 노드에 저장된 값보다 크거나 같아야 한다.
+        즉 루트 노드에 저장된 값이 가장 커야 한다.
+    - 최소힙
+        - 모든 노드에 저장된 값은 자식 노드에 저장된 값보다 작거나 같아야 한다.
+        즉 루트 노드에 저장된 값이 가장 작아야 한다.
+
+- 배열기반 데이터 삽입의 시간 복잡도 O(n)
+- 배열기반 데이터 삭제의 시간 복잡도 O(1)
+
+- 연결리스트 기반 데이터 삽입의 시간 복잡도 O(n)
+- 연결리스트 기반 데이터 삭제의 시간 복잡도 O(1)
+
+- 힙 기반 데이터 삽입의 사간복잡도 O(log2n)
+- 힙 기반 데이터 삭제의 사간복잡도 O(log2n)
+// 여기서 말하는'완전이진트리'인 힙은 배열을 기반으로 구현
+
+- 배열기반으로 힙 구현
+    - 연결리스트를 기반으로 힙을 구현하면, 새로운 노들를 힙의 '마지막 위치에 추가하는 것이 쉽지 않음'
+
+    - 완전이진트리
+    - 힙의 구현은 배열을 기반으로 하며 인덱스가 0인 요소는 비워둔다.
+    - 따라서 **힙에 저장된 노드의 개수와 마지막 노드의 고유번호는 일치한다.**
+    - 노드의 고유번호는 노드가 저장되는 배열의 인덱스 값이 된다.
+    - 우선순위를 나타내는 정수 값이 작을수록 높은 우선순위를 나타낸다고 가정한다.
+
+    - 인덱스 값 구하기
+        - 왼쪽 자식 노드의 인덱스 값 : 부모노드의 인덱스 값 * 2
+        - 오른쪽 자식 노드의 인덱스 값 : 부모노드의 인덱스 값 * 2 + 1
+        - 부모 노드의 인덱스 값 : 자식노드의 인덱스 값 / 2
+    
+    typedef char HData;
+    typedef int Priority;
+
+    typedef struct _heapElem
+    {
+        Priority pr;    //값이 작을수록 높은 우선순위
+        HData data;
+    } HeapElem;
+
+    typedef struct _heapElem
+    {
+        int numOfData;
+        HeapElem heapArr[HEAP_LEN];
+    } Heap;
+
+    void HeapInit(Heap * ph);
+    int HIsEmpty(Heap * ph);
+
+    void HInsert(Heap * ph, HData data, Priority pr);
+    HData HDelete(Heap * ph);   //우선수위가 가장 높은 데이터 삭제되도록 정의
+
+    int GetParentIDX(int idx);  //부모 노드의 인덱스 값 반환
+    int GetLChildIDX(int idx);  //왼쪽 자식 노드의 인덱스 값 반환
+    int GetRChilIDX(int idx);   //오른쪽 자식 노드의 인덱스 값 반환
+    int GetPriChildIDX(Heap * ph,int idx);  //우선 순위가 높은 자식의 인덱스 값 반환
+
+
+
