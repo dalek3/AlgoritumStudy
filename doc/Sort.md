@@ -15,8 +15,8 @@
 
 
 ## 1. selection sort
-```
-    selectionSort(A[], n){
+```C
+    selectionSort(A[], n){
         for last <- downto 2{                   ----- 1
             A[1...last] 중 가장 큰 수 A[k]를 찾는다; -- 2
             A[k] <-> A[last];                   ----- 3
@@ -30,7 +30,7 @@
 - 시간복잡도 : O(n^2)
 
 ## 2. bubble sort
-```
+```C
     bubbleSort(A[], n){
         for last <- n downto 2 {                  -------- 1
             for i <- to last-1                    -------- 2
@@ -46,7 +46,7 @@
 - 시간복잡도 :O(n^2)
 
 ## 3. insertion sort
-```
+```C
     insertionSort(A[], n) {
         for i <- 2 to n {                      ----------- 1
             A[1...i]의 적당한 자리에 A[i]를 삽입한다. ------ 2
@@ -67,7 +67,7 @@
 - 데이터가 저장된 배열을 절반으로 나눔
 - 각각을 순환적으로 정렬
 - 정렬된 두 개의 배열을 합쳐 전체를 정렬
-```
+```C
     mergeSort(A[], p, r){
         if(p<r) then {
             q <- (p+q)/2;
@@ -93,7 +93,7 @@
 - 정렬할 배열이 주어짐, 마지막 수를 기준(pivot)으로 삼는다.
 - 기준보다 작은 수는 기준의 왼쪽에 나머지는 기준의 오른쪽에 오도록 재배치(분할)한다.
 - 기준의 왼쪽과 오른쪽을 각각 **순환적으로** 정렬한다(정렬완료)
-```
+```C
     quickSort(A[], p, r){
         if (p<r) then {
             q = partition(A, p,r);
