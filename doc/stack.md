@@ -29,7 +29,7 @@
 
 
 1. 스택기반 타입 선언
-```
+```C
 #define TRUE 1
 #define FALSE 0
 #define STACK_LEN 100
@@ -43,7 +43,7 @@ typedef struct_arryStack
 typedef ArrayStack Stack;
 ```
 2. 연결 리스트 타입 선언
-```
+```C
 typedef int Data;
 
 typedef struct_node
