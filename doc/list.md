@@ -28,7 +28,7 @@
 - 현재 저장되어 있는 데이터의 수를 반환
     - `int LCount(List * plist);`
         - 리스트에 저장되어 있는 데이터의 수를 반환한다.
-```
+```C
 #define TRUE 1
 #define FALSE 0
 
@@ -45,7 +45,7 @@ typedef struct __ArrayList  // 저장할 대상의 자료형을 변경하기 위
 typedef ArrayList List;       // 리스트의 변경을 용이하게 하기위한 typdef
 ```
 2. 연결 리스트
-```
+```C
 typedef struct_node
 {
     int data;           // 데이터를 담을 공간
@@ -94,7 +94,7 @@ typedef struct _linkedList
 
 3. 원형 연결 리스트
 
-```
+```C
 typedef int Data;
 
 typedef struct_node
