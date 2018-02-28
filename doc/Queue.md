@@ -29,7 +29,7 @@
 ### 원형큐
 
 1. 배열기반
-```
+```C
 #define QUE_LEN 100
 typedef int Data;
 
@@ -60,7 +60,7 @@ int NextPosIdx(int pos)
 ```
 
 2. 연결리스트 기반
-```
+```C
 typedef int Data;
 
 typedef struct_node
