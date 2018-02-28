@@ -19,7 +19,7 @@
 - 이진 트리의 모든 노드는 직/간접적으로 연결되어 있다.
 - 따라서 루트 노드의 주소 값만 기억하면, 인진 트리 전체를 가리키는것과 다름이 없다.
 
-```
+```C
 typedef struct_bTreeNode
 {
     BTData data;
@@ -29,7 +29,7 @@ typedef struct_bTreeNode
 ```
 
 - 하나의 노드는 그 자체로 이진트리이다.
-```
+```C
     BTreeNode * MakeBTreeNode(void);                              //노드의 생성
     BTData GetData(BTreeNode * bt);                               //노드에 저장된 데이터를 반환
     void SetData(BTreeNode * bt, BTData data);                    //노드에 데이터를 저장
@@ -41,7 +41,7 @@ typedef struct_bTreeNode
 ```
 - 루트 노드를 포함하여 어떠한 노드의 주소 값도 인자로 전달될 수 있다.
 - 전달된 노드의 왼쪽, 오른쪽 '서브 노드의 루트 노드 주소 값' 또는 그냥 '노드의 주소 값'이 반환된다.
-```
+```C
     void MakeLeftSubTree(BTreeNode * main, BTreeNode * sub);      //main의 서브 왼쪽 서브 트리로 sub를 연결
 
     void MakeRightSubTree(BTreeNode * main, BTreeNode * sub);     //main의 오른쪽 서브트리로 sub를 연결
